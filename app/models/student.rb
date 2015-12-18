@@ -2,6 +2,7 @@ require_relative '../../db/config'
 require 'date'
 
 class Student < ActiveRecord::Base
+	belongs_to :teachers
 # implement your Student model here
 validates :email, :format => { :with => /\w+[@]\w+[.]\w{1}\w+/}, uniqueness: { case_sensitive: false }
 validates :age, :numericality => { :greater_than_or_equal_to => 5 }
@@ -24,5 +25,9 @@ validate :validate_phone
 		age = now.year - birthday.year - ((now.month > birthday.month || (now.month == birthday.month && now.day >= birthday.day)) ? 0 : 1)
 	end
 end
+
+
+
 # SELECT * FROM student 
-# WHERE first_name = #{first_name}
+# WHERE first_name = #{first_name
+
